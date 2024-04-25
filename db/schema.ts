@@ -77,7 +77,7 @@ export const challengesRelations = relations(challenges, ({ one, many }) => ({
 export const challengeOptions = pgTable("challenge_Options", {
   id: serial("id").primaryKey(),
   challengeId: integer("challenge_id")
-    .references(() => lessons.id, { onDelete: "cascade" })
+    .references(() => challenges.id, { onDelete: "cascade" })
     .notNull(),
   text: text("question").notNull(),
   correct: boolean("correct").notNull(),
