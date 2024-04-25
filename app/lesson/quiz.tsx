@@ -1,6 +1,6 @@
 "use client";
 
-import { challengeOptions, challenges } from "@/db/schema";
+import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
@@ -10,20 +10,16 @@ import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import Confetti from "react-confetti";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
-<<<<<<< HEAD
+
 import { useAudio, useWindowSize, useMount } from "react-use";
-=======
-import { useAudio, useWindowSize } from "react-use";
->>>>>>> 301126233ee6ca6951c9fdd0733d1b94010ee1f6
+
 import Image from "next/image";
 import { lessons } from "./../../db/schema";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
-<<<<<<< HEAD
+
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
-=======
->>>>>>> 301126233ee6ca6951c9fdd0733d1b94010ee1f6
 
 type Props = {
   initialPercentage: number;
@@ -33,7 +29,11 @@ type Props = {
     completed: boolean;
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
-  userSubscription: any;
+  userSubscription:
+    | (typeof userSubscription.$inferSelect & {
+        isActive: boolean;
+      })
+    | null;
 };
 
 export const Quiz = ({
@@ -43,7 +43,6 @@ export const Quiz = ({
   initialLessonChallenges,
   userSubscription,
 }: Props) => {
-<<<<<<< HEAD
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
 
@@ -52,8 +51,7 @@ export const Quiz = ({
       openPracticeModal();
     }
   });
-=======
->>>>>>> 301126233ee6ca6951c9fdd0733d1b94010ee1f6
+
   const { width, height } = useWindowSize();
   const router = useRouter();
   const [finishAudio] = useAudio({ src: "finish.mp3", autoPlay: true });
